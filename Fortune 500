@@ -1,0 +1,28 @@
+SELECT *
+FROM fortune_companies;
+SELECT company_name, industry,
+CASE WHEN employees >= 200000 THEN '200k employees'
+WHEN employees >=100000 THEN '100k employees'
+WHEN employees >=50000 THEN '50k employees'
+WHEN employees >=25000 THEN '25K employees'
+WHEN employees >=10000 THEN '10k employees'
+ELSE 'under 10k' END AS "company_size"
+FROM fortune_companies
+ORDER BY company_size ASC
+LIMIT 10;
+
+SELECT industry, SUM(revenue) AS revenue_total
+FROM fortune_companies
+GROUP BY industry
+HAVING SUM(revenue)
+ORDER BY revenue_total ASC;
+
+SELECT company_name, healthcare_benefits, paid_time_off_days
+FROM fortune_companies
+WHERE healthcare_benefits=1
+AND paid_time_off_days >=20
+ORDER BY paid_time_off_days desc
+LIMIT 10;
+
+SELECT industry, AVG(revenue) AS avg_revenue_industry
+FROM fortune_companies;
