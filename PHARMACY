@@ -1,0 +1,14 @@
+
+SELECT scripts.date_filled
+FROM medication med
+INNER JOIN prescriptions scripts
+ON med.person_ID = scripts.person_ID
+WHERE med.medication_name = 'Zonkify';
+
+SELECT DISTINCT med.medication_name, scripts.date_filled
+FROM medication med
+INNER JOIN prescriptions scripts
+ON med.person_ID = scripts.person_ID
+WHERE doctor_name = 'Dr. Garcia'
+AND scripts.active = 'y'
+GROUP BY medication_name;
