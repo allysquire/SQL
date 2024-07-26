@@ -1,0 +1,30 @@
+SELECT distinct 
+customers.customer_ID 
+,customers.customer_name 
+,customers.contact_email 
+,shipments.shipping_method 
+FROM customers 
+LEFT JOIN shipments 
+ON customers.customer_ID = shipments.sender_ID 
+ORDER BY customers.customer_ID asc 
+; 
+SELECT distinct 
+customers.customer_ID 
+,customers.customer_name 
+,customers.contact_email 
+,shipments.shipping_method 
+FROM customers 
+INNER JOIN shipments 
+ON customers.customer_ID = shipments.sender_ID 
+ORDER BY customers.customer_ID asc;
+
+SELECT distinct 
+customers.customer_ID 
+,customers.customer_name 
+,customers.contact_email 
+,shipments.shipping_method 
+FROM customers 
+INNER JOIN shipments 
+ON customers.customer_ID = shipments.sender_ID
+WHERE shipments.shipping_method = 'Standard'
+ORDER BY customers.customer_ID asc;
